@@ -137,21 +137,18 @@
   }
 })(jQuery);
 
-// Tạo mảng nguoiKhaiBao
 
+// Tạo mảng nguoiKhaiBao
 document.querySelector(".actions.clearfix li:nth-child(2) a").onclick =
   function () {
     let nguoiKhaiBao = {};
 
     let arrInput = document.querySelectorAll("form input, form select");
-    console.log("arrInput", arrInput);
 
     for (let input of arrInput) {
       let { name, value } = input;
       nguoiKhaiBao = { ...nguoiKhaiBao, [name]: value };
     }
-
-    console.log("nguoiKhaiBao", nguoiKhaiBao);
 
     // Tạo bảng từ mảng nguoiKhaiBao
     let content = ``;
