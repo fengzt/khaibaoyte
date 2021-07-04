@@ -137,24 +137,38 @@
   }
 })(jQuery);
 
-
+// Cách 1
 // Tạo mảng nguoiKhaiBao
-document.querySelector(".actions.clearfix li:nth-child(2) a").onclick =
-  function () {
-    let nguoiKhaiBao = {};
+// document.querySelector(".actions.clearfix li:nth-child(2) a").onclick =
+//   function () {
+//     let nguoiKhaiBao = {};
 
-    let arrInput = document.querySelectorAll("form input, form select");
+//     let arrInput = document.querySelectorAll("form input, form select");
 
-    for (let input of arrInput) {
-      let { name, value } = input;
-      nguoiKhaiBao = { ...nguoiKhaiBao, [name]: value };
-    }
+//     for (let input of arrInput) {
+//       let { name, value } = input;
+//       nguoiKhaiBao = { ...nguoiKhaiBao, [name]: value };
+//     }
 
-    // Tạo bảng từ mảng nguoiKhaiBao
-    let content = ``;
-    for (let key in nguoiKhaiBao) {
-      content += `<tr><td style="padding: 0.5rem 2rem 0.5rem 0">${key}</td><td>${nguoiKhaiBao[key]}</td></tr>`;
-    }
+//     // Tạo bảng từ mảng nguoiKhaiBao
+//     let content = ``;
+//     for (let key in nguoiKhaiBao) {
+//       content += `<tr><td style="padding: 0.5rem 2rem 0.5rem 0">${key}</td><td>${nguoiKhaiBao[key]}</td></tr>`;
+//     }
 
-    document.querySelector("#tblThongTinNguoiKhaiBao").innerHTML = content;
-  };
+//     document.querySelector("#tblThongTinNguoiKhaiBao").innerHTML = content;
+//   };
+
+// Cách 2
+import { NguoiKhaiBao } from "./NguoiKhaiBao.js";
+document.querySelector(".actions.clearfix li:nth-child(2) a").onclick = () => {
+  let nguoiKhaiBao = new NguoiKhaiBao();
+  let arrInput = document.querySelectorAll("form input, form select");
+  for (let input of arrInput) {
+    let { name, value } = input;
+    nguoiKhaiBao[name] = value;
+  }
+
+  document.querySelector("#tblThongTinNguoiKhaiBao").innerHTML =
+    nguoiKhaiBao.hienThiThongTin();
+};
