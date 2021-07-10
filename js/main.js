@@ -161,7 +161,7 @@
 
 // Cách 2
 import { NguoiKhaiBao } from "./NguoiKhaiBao.js";
-document.querySelector(".actions.clearfix li:nth-child(2) a").onclick = () => {
+document.querySelector(".actions.clearfix li:last-child a").onclick = () => {
   let nguoiKhaiBao = new NguoiKhaiBao();
   let arrInput = document.querySelectorAll("form input, form select");
   for (let input of arrInput) {
